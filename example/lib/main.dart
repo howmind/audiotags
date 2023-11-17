@@ -62,6 +62,7 @@ class _MyAppState extends State<MyApp> {
                     trackTotal: 2,
                     discNumber: 1,
                     discTotal: 3,
+                    lyrics: "lyrics - sample test",
                     pictures: [
                       Picture(
                           bytes: Uint8List.fromList([0, 0, 0, 0]),
@@ -86,6 +87,7 @@ class _MyAppState extends State<MyApp> {
                 int? trackTotal = tag?.trackTotal;
                 int? discNumber = tag?.discNumber;
                 int? discTotal = tag?.discTotal;
+                String? lyrics = tag?.lyrics;
                 int? duration = tag?.duration;
                 List<Picture>? pictures = tag?.pictures;
 
@@ -99,6 +101,7 @@ class _MyAppState extends State<MyApp> {
                 debugPrint("Track Total: ${trackTotal.toString()}");
                 debugPrint("Disc Number: ${discNumber.toString()}");
                 debugPrint("Disc Total: ${discTotal.toString()}");
+                debugPrint("Lyrics: ${lyrics.toString()}");
                 debugPrint("Duration: ${duration.toString()}");
                 debugPrint("Pictures: $pictures");
               },

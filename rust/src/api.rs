@@ -116,6 +116,11 @@ pub fn write(path: String, data: Tag) -> Result<(), AudioTagsError> {
         );
     }
 
+    //Lyrics
+    if let Some(lyrics) = data.lyrics {
+        tag.insert_text(ItemKey::Lyrics, lyrics);
+    }
+
     match tag.save_to_path(path) {
         Ok(_) => Ok(()),
         Err(err) => Err(AudioTagsError::Write {

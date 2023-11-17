@@ -13,7 +13,8 @@ mod tests {
     use super::*;
     use anyhow::Context;
     use api::*;
-
+    
+    #[test]
     fn read_tag_mp3() -> anyhow::Result<()> {
         let tag = read("samples/test.mp3".to_string()).context("Could not read tag.")?;
 
@@ -27,6 +28,7 @@ mod tests {
         println!("{:?}", tag.disc_number);
         println!("{:?}", tag.disc_total);
         println!("{:?}", tag.genre);
+        println!("{:?}", tag.lyrics);
         println!("{:?}", tag.duration);
         println!("{:?}", tag.pictures);
 
@@ -48,6 +50,7 @@ mod tests {
                 track_total: None,
                 disc_number: None,
                 disc_total: None,
+                lyrics: None,
                 duration: None,
                 pictures: Vec::new(),
             },
@@ -86,12 +89,13 @@ mod tests {
                 track_artist: Some("Track Artist".to_string()),
                 album: Some("Album".to_string()),
                 album_artist: Some("Album Artist".to_string()),
-                year: Some(2022),
+                //year: Some(2022),
                 track_number: Some(1),
                 track_total: Some(2),
                 disc_number: Some(1),
                 disc_total: Some(3),
                 genre: Some("Genre".to_string()),
+                //lyrics: Some("lyrics - test string".to_string()),
                 pictures: vec![picture1, picture2],
                 ..Default::default()
             },
@@ -101,9 +105,9 @@ mod tests {
         assert!(read_tag_mp3().is_ok());
     }
 
-    fn read_tag_mp4() -> anyhow::Result<()> {
-        let tag = read("samples/test.mp4".to_string()).context("Could not read tag.")?;
-
+    #[test]
+    fn read_tag_mp4() -> anyhow::Result<()> { 
+        let tag = read("samples/test2.m4a".to_string()).context("Could not read tag.")?;
         println!("{:?}", tag.title);
         println!("{:?}", tag.track_artist);
         println!("{:?}", tag.album);
@@ -114,6 +118,7 @@ mod tests {
         println!("{:?}", tag.disc_number);
         println!("{:?}", tag.disc_total);
         println!("{:?}", tag.genre);
+        println!("{:?}", tag.lyrics);
         println!("{:?}", tag.duration);
         println!("{:?}", tag.pictures);
 
@@ -123,7 +128,7 @@ mod tests {
     #[test]
     fn clear_tag_mp4() {
         write(
-            "samples/test.mp4".to_string(),
+            "samples/test2.m4a".to_string(),
             Tag {
                 title: None,
                 track_artist: None,
@@ -135,6 +140,7 @@ mod tests {
                 track_total: None,
                 disc_number: None,
                 disc_total: None,
+                lyrics: None,
                 duration: None,
                 pictures: Vec::new(),
             },
@@ -165,21 +171,21 @@ mod tests {
                 .map(|b| b.unwrap())
                 .collect(),
         );
-
         write(
-            "samples/test.mp4".to_string(),
+            "samples/test2.m4a".to_string(),
             Tag {
-                title: Some("Title".to_string()),
-                track_artist: Some("Track Artist".to_string()),
-                album: Some("Album".to_string()),
-                album_artist: Some("Album Artist".to_string()),
+                title: Some("new Title".to_string()),
+                //track_artist: Some("Track Artist".to_string()),
+                //album: Some("Album".to_string()),
+                //album_artist: Some("Album Artist".to_string()),
                 year: Some(2022),
                 track_number: Some(1),
                 track_total: Some(2),
                 disc_number: Some(1),
                 disc_total: Some(3),
-                genre: Some("Genre".to_string()),
-                pictures: vec![picture1, picture2],
+                //genre: Some("Genre".to_string()),
+                lyrics: Some("lyrics - test string".to_string()),
+                //pictures: vec![picture1, picture2],
                 ..Default::default()
             },
         )

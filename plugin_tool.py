@@ -170,7 +170,7 @@ def init():
 def code_gen():
     print("Generating code with flutter_rust_bridge...\n")
 
-    os.system("cargo install flutter_rust_bridge_codegen --version 1.82.1")
+    os.system("cargo install flutter_rust_bridge_codegen --version 1.82.3")
     os.system('flutter_rust_bridge_codegen \
         --dart-enums-style \
         --rust-input ./rust/src/api.rs \

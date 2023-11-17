@@ -96,6 +96,7 @@ impl Wire2Api<Tag> for wire_Tag {
             track_total: self.track_total.wire2api(),
             disc_number: self.disc_number.wire2api(),
             disc_total: self.disc_total.wire2api(),
+            lyrics: self.lyrics.wire2api(),
             duration: self.duration.wire2api(),
             pictures: self.pictures.wire2api(),
         }
@@ -140,6 +141,7 @@ pub struct wire_Tag {
     track_total: *mut u32,
     disc_number: *mut u32,
     disc_total: *mut u32,
+    lyrics: *mut wire_uint_8_list,
     duration: *mut u32,
     pictures: *mut wire_list_picture,
 }
@@ -192,6 +194,7 @@ impl NewWithNullPtr for wire_Tag {
             track_total: core::ptr::null_mut(),
             disc_number: core::ptr::null_mut(),
             disc_total: core::ptr::null_mut(),
+            lyrics: core::ptr::null_mut(),
             duration: core::ptr::null_mut(),
             pictures: core::ptr::null_mut(),
         }
