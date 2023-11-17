@@ -8,7 +8,7 @@ crate-type = ["staticlib", "cdylib"]
 
 [dependencies]
 flutter_rust_bridge = "=1.82.1"
-lofty = { path = "../../lofty-rs" }
+lofty = { git = "https://github.com/howmind/lofty-rs" }
 
 [dev-dependencies]
 anyhow = "1.0.68"
