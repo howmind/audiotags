@@ -1,7 +1,7 @@
-libaudiotags.so
-libaudiotags.a
-audiotags.dll
-audiotags.xcframework
+# libaudiotags.so
+# libaudiotags.a
+# audiotags.dll
+# audiotags.xcframework
 *.zip
 *.tar.gz
 
